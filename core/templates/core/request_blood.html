@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request Blood</title>
+    <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">BloodFinder</div>
+        <ul class="nav-links">
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'donor_list' %}">Find Donors</a></li>
+            <li><a href="{% url 'request_list' %}">Requests</a></li>
+        </ul>
+    </nav>
+
+    <section class="page-banner">
+        <h1>Blood Request Form</h1>
+        <p>Submit emergency blood request details.</p>
+    </section>
+
+    <div class="form-wrapper">
+        <form method="POST" class="main-form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn submit-btn">Submit Blood Request</button>
+        </form>
+    </div>
+
+    <script src="{% static 'core/js/script.js' %}"></script>
+</body>
+</html>

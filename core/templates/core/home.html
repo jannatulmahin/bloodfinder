@@ -1,0 +1,102 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency Blood Donor Finder</title>
+    <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">BloodFinder</div>
+        <ul class="nav-links">
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'donor_register' %}">Become a Donor</a></li>
+            <li><a href="{% url 'donor_list' %}">Find Donors</a></li>
+            <li><a href="{% url 'request_blood' %}">Request Blood</a></li>
+            <li><a href="{% url 'request_list' %}">Requests</a></li>
+            <li><a href="/admin/">Admin</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-overlay">
+            <h1>Emergency Blood Donor Finder</h1>
+            <p>Find blood donors quickly during emergency situations.</p>
+            <div class="hero-buttons">
+                <a href="{% url 'donor_list' %}" class="btn btn-light">Find Donor</a>
+                <a href="{% url 'request_blood' %}" class="btn btn-dark">Request Blood</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">System Overview</h2>
+        <div class="card-grid three-grid">
+            <div class="card stat-card">
+                <h3>Total Donors</h3>
+                <p class="count" data-target="{{ donor_count }}">0</p>
+            </div>
+            <div class="card stat-card">
+                <h3>Available Donors</h3>
+                <p class="count" data-target="{{ available_donor_count }}">0</p>
+            </div>
+            <div class="card stat-card">
+                <h3>Total Blood Requests</h3>
+                <p class="count" data-target="{{ request_count }}">0</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">Quick Access</h2>
+        <div class="card-grid two-grid">
+            <div class="card">
+                <h3>Become a Donor</h3>
+                <p>Register yourself as a donor and help save lives.</p>
+                <a href="{% url 'donor_register' %}" class="btn">Register Now</a>
+            </div>
+
+            <div class="card">
+                <h3>Find Donors</h3>
+                <p>Search donors by blood group, district, and area.</p>
+                <a href="{% url 'donor_list' %}" class="btn">Search Donor</a>
+            </div>
+
+            <div class="card">
+                <h3>Request Blood</h3>
+                <p>Submit an emergency blood request for a patient.</p>
+                <a href="{% url 'request_blood' %}" class="btn">Request Now</a>
+            </div>
+
+            <div class="card">
+                <h3>View Requests</h3>
+                <p>See all submitted blood requests in one place.</p>
+                <a href="{% url 'request_list' %}" class="btn">View Requests</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">Available Blood Groups</h2>
+        <div class="blood-grid">
+            <div class="blood-box">A+</div>
+            <div class="blood-box">A-</div>
+            <div class="blood-box">B+</div>
+            <div class="blood-box">B-</div>
+            <div class="blood-box">AB+</div>
+            <div class="blood-box">AB-</div>
+            <div class="blood-box">O+</div>
+            <div class="blood-box">O-</div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>Emergency Blood Donor Finder | Django Project</p>
+    </footer>
+
+    <script src="{% static 'core/js/script.js' %}"></script>
+</body>
+</html>

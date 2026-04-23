@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Requests</title>
+    <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">BloodFinder</div>
+        <ul class="nav-links">
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'request_blood' %}">New Request</a></li>
+        </ul>
+    </nav>
+
+    <section class="page-banner">
+        <h1>All Blood Requests</h1>
+        <p>See all submitted emergency blood requests.</p>
+    </section>
+
+    <div class="container">
+        <div class="card-grid three-grid">
+            {% for req in requests %}
+            <div class="card request-card fade-card">
+                <h3>{{ req.patient_name }}</h3>
+                <p><strong>Blood Group:</strong> {{ req.blood_group_needed }}</p>
+                <p><strong>Units:</strong> {{ req.units_needed }}</p>
+                <p><strong>Hospital:</strong> {{ req.hospital_name }}</p>
+                <p><strong>District:</strong> {{ req.district }}</p>
+                <p><strong>Area:</strong> {{ req.area }}</p>
+                <p><strong>Date:</strong> {{ req.required_date }}</p>
+                <p><strong>Time:</strong> {{ req.required_time }}</p>
+                <p><strong>Urgency:</strong> <span class="urgency">{{ req.urgency }}</span></p>
+                <p><strong>Contact Person:</strong> {{ req.contact_person }}</p>
+                <p><strong>Phone:</strong> {{ req.contact_phone }}</p>
+                <p><strong>Status:</strong> {{ req.status }}</p>
+            </div>
+            {% empty %}
+            <div class="empty-box">
+                <p>No blood request found.</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <script src="{% static 'core/js/script.js' %}"></script>
+</body>
+</html>
